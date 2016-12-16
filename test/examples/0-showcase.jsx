@@ -65,6 +65,7 @@ class ShowcaseLayout extends React.Component {
           layouts={this.state.layouts}
           onBreakpointChange={this.onBreakpointChange}
           onLayoutChange={this.onLayoutChange}
+          dynamicCompact={true}
           // WidthProvider option
           measureBeforeMount={false}
           // I like to have it animate on mount. If you don't, delete `useCSSTransforms` (it's default `true`)
@@ -80,7 +81,7 @@ class ShowcaseLayout extends React.Component {
 module.exports = ShowcaseLayout;
 
 function generateLayout() {
-  return _.map(_.range(0, 25), function (item, i) {
+  return _.map(_.range(0, 12), function (item, i) {
     var y = Math.ceil(Math.random() * 4) + 1;
     return {
       x: _.random(0, 5) * 2 % 12,
@@ -88,7 +89,7 @@ function generateLayout() {
       w: 2,
       h: y,
       i: i.toString(),
-      static: Math.random() < 0.05
+      static: false
     };
   });
 }

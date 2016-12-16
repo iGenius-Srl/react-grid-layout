@@ -2,7 +2,7 @@
 import React, {PropTypes} from 'react';
 import isEqual from 'lodash.isequal';
 import {autoBindHandlers, bottom, childrenEqual, cloneLayoutItem, compact, getLayoutItem, moveElement,
-  synchronizeLayoutWithChildren, validateLayout} from './utils';
+  synchronizeLayoutWithChildren, validateLayout, dynamicCompact} from './utils';
 import GridItem from './GridItem';
 const noop = function() {};
 
@@ -241,7 +241,7 @@ export default class ReactGridLayout extends React.Component {
     };
 
     // Move the element to the dragged location.
-    layout = moveElement(layout, l, x, y, true /* isUserAction */);
+    // layout = moveElement(layout, l, x, y, true /* isUserAction */);
 
     this.props.onDrag(layout, oldDragItem, l, placeholder, e, node);
 
@@ -270,8 +270,16 @@ export default class ReactGridLayout extends React.Component {
 
     this.props.onDragStop(layout, oldDragItem, l, null, e, node);
 
+    let newLayout;
+  
+    if (this.props.dynamicCompact) {
+      newLayout = dynamicCompact(layout);
+    } else {
+      newLayout = compact(layout, this.props.verticalCompact);
+    }
+
     // Set state
-    const newLayout = compact(layout, this.props.verticalCompact);
+    
     const {oldLayout} = this.state;
     this.setState({
       activeDrag: null,
