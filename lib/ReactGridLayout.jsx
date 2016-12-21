@@ -241,7 +241,7 @@ export default class ReactGridLayout extends React.Component {
     };
 
     // Move the element to the dragged location.
-    // layout = moveElement(layout, l, x, y, true /* isUserAction */);
+    layout = moveElement(layout, l, x, y, true /* isUserAction */);
 
     this.props.onDrag(layout, oldDragItem, l, placeholder, e, node);
 
@@ -275,11 +275,11 @@ export default class ReactGridLayout extends React.Component {
     if (this.props.dynamicCompact) {
       newLayout = dynamicCompact(layout);
     } else {
+      console.log('as')
       newLayout = compact(layout, this.props.verticalCompact);
     }
 
     // Set state
-    
     const {oldLayout} = this.state;
     this.setState({
       activeDrag: null,
