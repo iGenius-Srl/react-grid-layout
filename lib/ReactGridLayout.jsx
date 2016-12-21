@@ -272,12 +272,12 @@ export default class ReactGridLayout extends React.Component {
 
     let newLayout;
   
-    if (this.props.dynamicCompact) {
-      newLayout = dynamicCompact(layout);
-    } else {
-      console.log('as')
-      newLayout = compact(layout, this.props.verticalCompact);
-    }
+    // if (this.props.dynamicCompact) {
+       newLayout = dynamicCompact(layout, this.props.cols);
+    // } else {
+    //   console.log('as')
+    //   newLayout = compact(layout, this.props.verticalCompact);
+    //}
 
     // Set state
     const {oldLayout} = this.state;

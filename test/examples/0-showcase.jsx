@@ -81,8 +81,8 @@ class ShowcaseLayout extends React.Component {
 module.exports = ShowcaseLayout;
 
 function generateLayout() {
-  let heights = [{h:4, w:2}, {h:8, w:2}, {h:4, w:4}];
-  return _.map(_.range(0, 12), function (item, i) {
+  let heights = [{h:4, w:2}, {h:8, w:2}, {h:8, w:4}];
+  return _.map(_.range(0, 10), function (item, i) {
     var y = Math.ceil(Math.random() * 4) + 1;
     let r = _.random(0,2);
     return {
