@@ -134,6 +134,7 @@ export default class ReactGridLayout extends React.Component {
     layout: [],
     margin: [10, 10],
     isDraggable: true,
+    isSection: false,
     isResizable: true,
     useCSSTransforms: true,
     verticalCompact: true,
@@ -378,6 +379,7 @@ export default class ReactGridLayout extends React.Component {
         maxRows={maxRows}
         rowHeight={rowHeight}
         isDraggable={false}
+        isSection={false}
         isResizable={false}
         useCSSTransforms={useCSSTransforms}>
         <div />
@@ -395,14 +397,13 @@ export default class ReactGridLayout extends React.Component {
     const l = getLayoutItem(this.state.layout, child.key);
     if (!l) return null;
     const {width, cols, margin, containerPadding, rowHeight,
-           maxRows, isDraggable, isResizable, useCSSTransforms,
+           maxRows, isDraggable, isResizable, isSection, useCSSTransforms,
            draggableCancel, draggableHandle} = this.props;
     const {mounted} = this.state;
 
     // Parse 'static'. Any properties defined directly on the grid item will take precedence.
     const draggable = Boolean(!l.static && isDraggable && (l.isDraggable || l.isDraggable == null));
     const resizable = Boolean(!l.static && isResizable && (l.isResizable || l.isResizable == null));
-
     return (
       <GridItem
         containerWidth={width}
@@ -421,6 +422,7 @@ export default class ReactGridLayout extends React.Component {
         onResizeStop={this.onResizeStop}
         isDraggable={draggable}
         isResizable={resizable}
+        isSection={l.isSection}
         useCSSTransforms={useCSSTransforms && mounted}
         usePercentages={!mounted}
 

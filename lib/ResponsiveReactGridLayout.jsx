@@ -88,7 +88,6 @@ export default class ResponsiveReactGridLayout extends React.Component {
     // for this layout.
     const initialLayout = findOrGenerateResponsiveLayout(layouts, breakpoints, breakpoint,
                                                          breakpoint, colNo, verticalCompact);
-
     return {
       layout: initialLayout,
       breakpoint: breakpoint,

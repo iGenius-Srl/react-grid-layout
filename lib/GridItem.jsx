@@ -73,6 +73,7 @@ export default class GridItem extends React.Component {
 
     // Flags
     isDraggable: PropTypes.bool.isRequired,
+    isSection : PropTypes.bool.isRequired,
     isResizable: PropTypes.bool.isRequired,
     static: PropTypes.bool,
 
@@ -353,7 +354,7 @@ export default class GridItem extends React.Component {
   }
 
   render(): React.Element<any> {
-    const {x, y, w, h, isDraggable, isResizable, useCSSTransforms} = this.props;
+    const {x, y, w, h, isDraggable, isResizable, isSection, useCSSTransforms} = this.props;
 
     const pos = this.calcPosition(x, y, w, h, this.state);
     const child = React.Children.only(this.props.children);
