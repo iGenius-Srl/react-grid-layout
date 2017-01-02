@@ -73,7 +73,7 @@ export default class GridItem extends React.Component {
 
     // Flags
     isDraggable: PropTypes.bool.isRequired,
-    isSection : PropTypes.bool.isRequired,
+    isSection : PropTypes.bool,
     isResizable: PropTypes.bool.isRequired,
     static: PropTypes.bool,
 

@@ -330,7 +330,7 @@ export default class ReactGridLayout extends React.Component {
 
     // Re-compact the layout and set the drag placeholder.
     this.setState({
-      layout: compact(layout, this.props.verticalCompact),
+      layout: dynamicCompact(layout, this.props.cols),
       activeDrag: placeholder
     });
   }
@@ -342,7 +342,7 @@ export default class ReactGridLayout extends React.Component {
     this.props.onResizeStop(layout, oldResizeItem, l, null, e, node);
 
     // Set state
-    const newLayout = compact(layout, this.props.verticalCompact);
+    const newLayout = dynamicCompact(layout, this.props.cols);
     const {oldLayout} = this.state;
     this.setState({
       activeDrag: null,
