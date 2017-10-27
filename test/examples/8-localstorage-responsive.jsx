@@ -1,5 +1,6 @@
 'use strict';
 var React = require('react');
+var PropTypes = require('prop-types');
 var PureRenderMixin = require('react/lib/ReactComponentWithPureRenderMixin');
 var WidthProvider = require('react-grid-layout').WidthProvider;
 var ResponsiveReactGridLayout = require('react-grid-layout').Responsive;
